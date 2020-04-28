@@ -27,7 +27,13 @@ You'll probably want to set up a shortcut for starting. I like `nmap <silent> <L
 
 ## How do?
 
+### Writing
+
 Start a `tmux` or `screen` session, create a horizontal split pane, and `tail -f` the proper MUCK output file (e.g: `~/.local/share/stimmtausch/spr_ephah/out`) in the upper pane, and set the proper world with `<Leader>#` and you're ready to go. In insert mode, enter sends the current line, and in visual mode, it sends the current selection (so you can type up a few lines and send them at the same time; to get a new line, do `<ESC>o`)
+
+### Reading
+
+If you want vim's wordwrap, you can do `<Leader>#r` to have it read and follow the output file as well. A bit slow on longer buffers, though. You'll need the [Colorizer](https://github.com/chrisbra/Colorizer) plugin for this to work, too, otherwise you'll keep getting ANSI escapes.
 
 ## Why?!
 

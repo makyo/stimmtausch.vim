@@ -50,6 +50,17 @@ function! StimmtauschSendSelection()
     endif
 endfunction
 
+function! StimmtauschReadWorld(world)
+    call StimmtauschSetWorld(a:world)
+    execute 'e '.s:out
+    set ut=500
+    set syntax=
+    set laststatus=0
+    set autoread
+    ColorHighlight
+    au CursorHold * checktime | call feedkeys('G')
+endfunction
+
 function! StimmtauschSetWorld(world)
     " Sets the world based in its 1-index in the config list
     let s:world = g:stimmtausch['worlds'][a:world]
@@ -82,6 +93,7 @@ function! s:StimmtauschSetup()
     for world in g:stimmtausch['worlds']
         let l:idx = l:num - 1
         execute 'nmap <silent> <Leader>'.l:num.' :call StimmtauschSetWorld('.l:idx.')<CR>'
+        execute 'nmap <silent> <Leader>'.l:num.'r :call StimmtauschReadWorld('.l:idx.')<CR>'
         let l:num += 1
     endfor
 endfunction
