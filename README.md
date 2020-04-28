@@ -1,6 +1,8 @@
 # stimmtaush.vim
 
-Simple vim plugin for writing to [Stimmtausch](https://stimmtausch.org) connections
+Simple vim plugin for writing to [Stimmtausch](https://stimmtausch.com) connections
+
+![Sample](sample.png)
 
 ## Setting up
 
