@@ -78,6 +78,7 @@ function! s:StimmtauschSetup()
     " Settings
     set nonumber nospell nolist
     set wrap linebreak
+    set backspace-=eol  " Don't backspace over newline.
     set mouse=n  " Interferes with clicking links in other tmux panes.
     set laststatus=0  " Hide status bar.
     set syntax=stimmtausch ft=stimmtausch  " If you need, you can modify with an after file
