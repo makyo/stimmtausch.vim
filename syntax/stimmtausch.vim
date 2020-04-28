@@ -2,7 +2,7 @@
 
 syn match MUCKWhisper /^wh\(isper\)\?[^=]*$/
 syn match MUCKPage    /^p\(age\)\?[^=]*$/
-syn match MUCKWPNames /^\(wh\(isper\)\?\|p\(age\)?\)\s\+[^=]*=/
+syn match MUCKWPNames /^\(wh\(isper\)\?\|p\(age\)\?\)\s\+[^=]*=/
 syn match MUCKSay     /^\("\|say\?\)\s*$/
 syn match MUCKPose    /^\(:\|po\(se\)\?\)\s*$/
 syn match MUCKSPText  /^\(:\|po\(se\)\?\s\+\|"\|say\?\s\+\)./he=e-1
