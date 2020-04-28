@@ -31,4 +31,10 @@ Start a `tmux` or `screen` session, create a horizontal split pane, and `tail -f
 
 ## Why?!
 
-Visible history, inline spellcheck, syntax highlighting, length of lines (some MUCKs only allow 1024 characters to be sent, and if you're buffer-busting, knowing how many characters you're sending is good), word-wrap breaking links with smaller screens/longer links...all things I'd like to fix in Stimmtausch's UI but haven't the time to tackle.
+* Visible history (with editable reposes!)
+* Optional spellcheck
+* Syntax highlighting
+* Length of lines (some MUCKs only allow 1024 characters to be sent, and if you're buffer-busting, knowing how many characters you're sending is good)
+* Word-wrap breaking links with smaller screens/longer links
+
+...all things I'd like to fix in Stimmtausch's UI but haven't the time to tackle.
