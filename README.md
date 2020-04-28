@@ -2,6 +2,8 @@
 
 Simple vim plugin for writing to [Stimmtausch](https://stimmtausch.org) connections
 
+![Sample](sample.png)
+
 ## Setting up
 
 Create a global with config options:
