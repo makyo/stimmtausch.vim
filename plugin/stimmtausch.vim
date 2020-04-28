@@ -24,7 +24,8 @@ function! StimmtauschSendLine()
         let l:infile = expand(s:in)
         execute '.w >> '.l:infile
         if has_key(g:stimmtausch, 'clear_on_send')
-            normal ggdGi
+            execute '%d'
+            normal i
         else
             normal o
         endif
@@ -40,7 +41,8 @@ function! StimmtauschSendSelection()
         let l:infile = expand(s:in)
         execute "'<,'>w >> ".l:infile
         if has_key(g:stimmtausch, 'clear_on_send')
-            normal ggdGi
+            execute '%d'
+            normal i
         else
             normal Go
         endif
@@ -51,14 +53,16 @@ function! StimmtauschSendSelection()
 endfunction
 
 function! StimmtauschReadWorld(world)
+    " Watches (tail -f like) the output file for the world. Good if you want
+    " word wrap, but otherwise slow and flaky. Requires Colorize.
     call StimmtauschSetWorld(a:world)
     execute 'e '.s:out
     set ut=500
     set syntax=
-    set laststatus=0
-    set autoread
+    set mouse=
+    set autoread ro
     ColorHighlight
-    au CursorHold * checktime | call feedkeys('G')
+    au CursorHold * checktime | call feedkeys('G')  " XXX not great. Sends to active buffer, meaning you can't read and write in the same editor
 endfunction
 
 function! StimmtauschSetWorld(world)
@@ -74,9 +78,9 @@ function! s:StimmtauschSetup()
     " Settings
     set nonumber nospell nolist
     set wrap linebreak
-    " Interferes with clicking links in other tmux panes.
-    set mouse=n
-    set syntax=stimmtausch ft=stimmtausch
+    set mouse=n  " Interferes with clicking links in other tmux panes.
+    set laststatus=0  " Hide status bar.
+    set syntax=stimmtausch ft=stimmtausch  " If you need, you can modify with an after file
     let l:break = '⮨'
     if has_key(g:stimmtausch, 'break_symbol')
         let l:break = g:stimmtausch['break_symbol']
@@ -89,6 +93,9 @@ function! s:StimmtauschSetup()
     imap <CR> <ESC>:call StimmtauschSendLine()<CR>
     vmap <CR> <ESC>:call StimmtauschSendSelection()<CR>
     imap <silent> <S-CR> <ESC>o
+
+    " Build leader maps for the worlds based on 1-index (feels more natural, I
+    " guess?).
     let l:num = 1
     for world in g:stimmtausch['worlds']
         let l:idx = l:num - 1
